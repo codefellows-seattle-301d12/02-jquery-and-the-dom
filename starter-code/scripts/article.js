@@ -7,8 +7,9 @@ function Article (options) {
 
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
-  $newArticle.attr('data-category', this.category);
-  // TODO: Use jQuery to fill in the rest of the current template clone
+  $newArticle.attr('data-category, this.category');
+  // TODO: Use jQuery to fill in the rest of the current template clone.
+  $newArticle.find(); //fill this in
   $newArticle.find('time').text('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
   // TODO: This cloned article is no longer a template. We need to remove its class.
   return $newArticle;
@@ -19,10 +20,10 @@ ourLocalData.forEach(function(article) {
 });
 
 articles.forEach(function(article) {
-  $('#articles').append(article.toHtml());
+  $('#articles').append(article);
 });
 
-// This function will sort articles in descending order.
+// This function will sort articles in descending oder.
 ourLocalData.sort(function(currentObject, nextObject) {
   return (new Date(nextObject.publishedOn)) - (new Date(currentObject.publishedOn));
 });
