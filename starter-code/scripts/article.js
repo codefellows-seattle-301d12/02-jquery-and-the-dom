@@ -2,7 +2,7 @@ var articles = [];
 
 function Article (options) {
   this.title = options.title;
-  // TODO: Use the js object passed in to complete the constructor//
+  // DONE: Use the js object passed in to complete the constructor//
   this.category = options.category;
   this.author = options.author;
   this.authorUrl = options.authorUrl;
@@ -14,12 +14,17 @@ Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
   $newArticle.attr('data-category', this.category);
   // TODO: Use jQuery to fill in the rest of the current template clone
-  $newArticle.find();
+  $newArticle.find('h1').text(this.title);
+  $newArticle.find('address.a').html(this.authorUrl);
+  $newArticle.find('address').append(this.author);
   $newArticle.find('time').text('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
+  $newArticle.find('.article-body').append(this.body);
   // TODO: This cloned article is no longer a template. We need to remove its class.
-
+  $newArticle.removeAttr('template');
   return $newArticle;
 };
+
+articles[0].toHtml();
 
 ourLocalData.forEach(function(article) {
   articles.push(new Article(article));
