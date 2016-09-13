@@ -3,6 +3,11 @@ var articles = [];
 function Article (options) {
   this.title = options.title;
   // TODO: Use the js object passed in to complete the constructor function.
+  this.category = options.category;
+  this.author = options.author;
+  this.authorUrl = options.authorUrl;
+  this.publishedOn = options.publishedOn;
+  this.body = options.body;
 };
 
 Article.prototype.toHtml = function() {
