@@ -2,7 +2,7 @@ var articles = [];
 
 function Article (options) {
   this.title = options.title;
-  
+
   // TODO: Use the js object passed in to complete the constructor function.
   this.category = options.category;
   this.author = options.author;
@@ -16,10 +16,10 @@ Article.prototype.toHtml = function() {
   $newArticle.attr('data-category', this.category);
 
   // TODO: Use jQuery to fill in the rest of the current template clone
-  $newArtlicle.find('h1').text(this.title);
-  $newArticle.find('address').text(this.author);
-  $newArticle.find().text(this.authorUrl);
-  $newArticle.attr('article-body').text(this.body);
+  $newArticle.find('h1').text(this.title);
+  $newArticle.find('address a').text(this.author);
+  $newArticle.find('address a').attr('href', this.authorUrl);
+  $newArticle.find('.article-body').html(this.body);
 
   $newArticle.find('time').text('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
 
